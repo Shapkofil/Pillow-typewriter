@@ -6,6 +6,7 @@ import cv2
 import numpy as np
 import subprocess
 import random
+import textwrap
 
 from tqdm import tqdm
 
@@ -35,8 +36,8 @@ class PilWriter():
 
         if not text == "":
             text = " ".join(text.split("\n"))
-            text = "\n".join(textwrap.wrap(text, img_size[0]//(font_size*1.33333)))
-            print("weird {}".fromat(img_size[0]//(font_size*1.33333)))
+            text = "\n".join(textwrap.wrap(text, 2*img_size[0]//(font_size*1.333))) + " "
+            print("weird {}".format(img_size[0]//(font_size)))
             self.mstates = [text[:end] for end in range(len(text)+1)]
             self.text = text
 
