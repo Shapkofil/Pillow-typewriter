@@ -32,9 +32,13 @@ class PilWriter():
         self.fnt = ImageFont.truetype(font, font_size)
         self.img_size = img_size
 
-        self.text = text;
+
         if not text == "":
+            text = " ".join(text.split("\n"))
+            text = "\n".join(textwrap.wrap(text, img_size[0]//(font_size*1.33333)))
+            print("weird {}".fromat(img_size[0]//(font_size*1.33333)))
             self.mstates = [text[:end] for end in range(len(text)+1)]
+            self.text = text
 
 
     def gen_img(self, text, linespacing=1.5):
